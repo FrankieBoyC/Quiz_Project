@@ -20,29 +20,34 @@ func main() {
 	} else {
 		fmt.Println("You cannot play!")
 	}
+
+	score := 0
+	numQuestions := 2
+
 	fmt.Printf("What is better, the RTX 3080 or RTX 3090? ")
 	var answer string
 	var answer2 string
 	fmt.Scan(&answer, &answer2)
 
-	if answer+" "+answer2 == "RTX 3090" {
+	if answer+" "+answer2 == "RTX 3090" || answer+" "+answer2 == "rtx 3090" {
 		fmt.Println("Correct!")
-	} else if answer+" "+answer2 == "rtx 3090" {
-		fmt.Println("Correct!")
+		score += 1
 	} else {
 		fmt.Println("Incorrect!")
 	}
 
 	fmt.Printf("How many cores does the Ryzen 9 3900x have? ")
-	var cores Uint
+	var cores uint
 	fmt.Scan(&cores)
 
 	if cores == 12 {
 		fmt.Println("Correct!")
+		score += 1
 	} else {
 		fmt.Println("Incorrect!")
 	}
 
-	// You are at 55:40 on the video
-	// https://www.youtube.com/watch?v=LHhsNa_Kgns&t=3529s
+	fmt.Printf("You got %v out of %v right.\n", score, numQuestions)
+	percent := (float64(score) / float64(numQuestions)) * 100
+	fmt.Printf("You scored : %v%%.", percent)
 }
